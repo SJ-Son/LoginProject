@@ -9,7 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let emailTextFieldView = UIView()
+    // 클로저의 실행문 타입
+    let emailTextFieldView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.darkGray
+        // 둥근 테두리
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     func makeUI() {
-        emailTextFieldView.backgroundColor = UIColor.darkGray
+        // 뷰 계층 구조에 뷰를 추가
         view.addSubview(emailTextFieldView)
         // 자동으로 켜주는 autolayout 기능 끄기
         emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,4 +38,3 @@ class ViewController: UIViewController {
     }
     
 }
-
