@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         button.setTitle("표시", for: .normal)
         button.setTitleColor(.lightGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-//        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
+        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         return button
     }()
     
@@ -186,17 +186,23 @@ class ViewController: UIViewController {
             passwordResetButton.heightAnchor.constraint(equalToConstant: textViewHeight)
         ])
     }
-    // selector로 연결하려면 @objc 붙어야 함
+    
+    // selector로 동작한다면 @objc 붙어야 함
+    @objc func passwordSecureModeSetting() {
+        passwordTextField.isSecureTextEntry.toggle() // bool 타입에 toggle 메서드 on / off 기능
+    }
+    
+    // selector로 동작한다면 @objc 붙어야 함
     // https://stackoverflow.com/questions/52988717/why-is-the-objc-tag-needed-to-use-a-selector
     @objc func resetButtonTapped() {
         let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
         
         let success = UIAlertAction(title: "확인", style: .default) { action in
-            print("확인버튼눌림")
+            print("확인버튼눌림") // 확인버튼 눌리면 이 클로저 실행
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel) { cancel in
-            print("최소버튼눌림")
+            print("최소버튼눌림") // 취소버튼 눌리면 이 클로저 실행
         }
         
         alert.addAction(success)
