@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false
-        //        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -236,6 +236,10 @@ class ViewController: UIViewController {
         }
         loginButton.backgroundColor = .red
         loginButton.isEnabled = true
+    }
+    
+    @objc func loginButtonTapped() {
+        print("로그인버튼 눌림")
     }
     
     // 빈공간 누르면 키보드 내려감
