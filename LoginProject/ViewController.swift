@@ -262,5 +262,10 @@ extension ViewController: UITextFieldDelegate {
                 passwordInfoLabelCenterYConstraint.constant = 0
             }
         }
+        
+        // 오토레이아웃 동적 조정 -> 자연스럽게 보여주는 코드
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
     }
 }
