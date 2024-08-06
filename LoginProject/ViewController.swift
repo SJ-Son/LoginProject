@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
             emailInfoLabel.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: 8),
-//            emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor),
+            //            emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor),
             emailInfoLabelCenterYConstraint,
             
             emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
@@ -170,7 +170,7 @@ class ViewController: UIViewController {
             
             passwordInfoLabel.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
             passwordInfoLabel.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: 8),
-//            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
+            //            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
             passwordInfoLabelCenterYConstraint,
             
             passwordTextField.topAnchor.constraint(equalTo: passwordTextFieldView.topAnchor, constant: 15),
@@ -236,7 +236,11 @@ extension ViewController: UITextFieldDelegate {
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.3399226641, green: 0.3399226641, blue: 0.3399226641, alpha: 1)
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
             // 오토레이아웃 업데이트
-            emailInfoLabelCenterYConstraint.constant = -13
+            passwordInfoLabelCenterYConstraint.constant = -13
+        }
+        // 오토레이아웃 동적 조정 -> 자연스럽게 보여주는 코드
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
         }
     }
     
@@ -247,7 +251,7 @@ extension ViewController: UITextFieldDelegate {
             // 빈칸이면 원래로 되돌리기
             if emailTextField.text == "" {
                 emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
-                //                emailInfoLabelCenterYConstraint.constant = 0
+                emailInfoLabelCenterYConstraint.constant = 0
             }
         }
         if textField == passwordTextField {
@@ -255,7 +259,7 @@ extension ViewController: UITextFieldDelegate {
             // 빈칸이면 원래로 되돌리기
             if passwordTextField.text == "" {
                 passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
-                //                emailInfoLabelCenterYConstraint.constant = 0
+                passwordInfoLabelCenterYConstraint.constant = 0
             }
         }
     }
