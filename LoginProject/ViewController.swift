@@ -6,10 +6,13 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
+// 클래스는 구조체보다 느림
+// direct dispatch가 일어나도록 final 붙여야함
+final class ViewController: UIViewController {
     
     // MARK: - 이메일 입력하는 텍스트 뷰
+    // 접근제어 private
+    // lazy var 사용하여 addSubview 이용
     private lazy var emailTextFieldView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
